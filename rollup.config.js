@@ -13,6 +13,8 @@ import css from 'rollup-plugin-css-only';
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
+// Important for css extra.css
+const fs = require('fs');
 
 const onwarn = (warning, onwarn) =>
 	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
@@ -37,7 +39,13 @@ export default {
 					hydratable: true,
 				}
 			}),
-			css({ output: 'extra.css' }),
+			// Important for css extra.css
+			css({
+				output: function (styles, styleNodes) {
+					console.log('Writing bundled CSS.');
+					fs.writeFileSync('static/extra.css', styles);
+				}
+			}),
 			url({
 				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
 				publicPath: '/client/'
