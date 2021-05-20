@@ -4,13 +4,19 @@
   "assets": {
     "main": "client.b9ff8bbe.js"
   },
-  "css": {},
+  "css": {
+    "main": [
+      "client-06494acf.css"
+    ]
+  },
   "dependencies": {
     "index.svelte": [
-      "index.88024470.js"
+      "index.88024470.js",
+      "inject_styles.5607aec6.js"
     ],
     "about.svelte": [
-      "about.6db147be.js"
+      "about.6db147be.js",
+      "inject_styles.5607aec6.js"
     ]
   }
 }

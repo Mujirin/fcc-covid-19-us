@@ -10,7 +10,7 @@ npx degit "sveltejs/sapper-template#rollup" .
 
 ## Installing
 ```bash
-npm Install
+npm install
 ```
 
 ## Running the dev
@@ -42,6 +42,13 @@ Copy git file inside fcc-covid-19-us and place it in hwa dir, and then delete th
 1. Clicking branch logo in left side bar vs code
 2. Clicking more dots > Checkout to > Ener 1-cleanup name > Create branch from master
 
+## Cleaning the apps
+
+## Installing bulma etc.
+```bash
+npm install --save-dev bulma rollup-plugin-css-only moment chart.js
+npm install --save axios
+```
 
 
 
