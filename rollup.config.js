@@ -42,7 +42,7 @@ export default {
 			// Important for css extra.css
 			css({
 				output: function (styles, styleNodes) {
-					console.log('Writing bundled CSS.');
+					console.log('Writing extra CSS.');
 					fs.writeFileSync('static/extra.css', styles);
 				}
 			}),
