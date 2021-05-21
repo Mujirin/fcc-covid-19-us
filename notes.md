@@ -50,5 +50,10 @@ npm install --save-dev bulma rollup-plugin-css-only moment chart.js
 npm install --save axios
 ```
 
-
-
+## Pulling and pushing
+- Create a new branch (let say x-branch) from master
+- DO SOMETHING!
+- Commit and push in the x-branch
+- Checkout to master branch
+- Pull from the x-branch
+- Push
