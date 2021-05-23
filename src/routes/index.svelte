@@ -1,12 +1,16 @@
 <script context="module">
 	import requests from '../data/requests.js';
 	
+	
 	export async function preload() {
 		try {
 			const usStats = await requests.usStats();
+			const historicUS = await requests.historicUS();
+			// console.log(historicUS, 'historicUS');
 
-			return { usStats }
+			return { usStats, historicUS }
 		} catch(e) {
+			console.log(e);
 			this.error(500, 
 			"There was an eror in calling the api, please try again in 5 minutes.");
 			return;
@@ -21,12 +25,11 @@
 	import CovidChart from '../components/CovidChart.svelte';
 
 	import TableContainer from '../components/TableContainer.svelte';
-import About from './about.svelte';
-import Nav from '../components/Nav.svelte';
 
 	export let usStats;
-
-	console.log(usStats, 'usState')
+	export let historicUS;
+	console.log(historicUS, 'historicUS');
+	// console.log(usStats, 'usState');
 </script>
 
 <svelte:head>
