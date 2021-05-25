@@ -29,8 +29,9 @@
 	import CovidChart from '../components/CovidChart.svelte';
 
 	import TableContainer from '../components/TableContainer.svelte';
-import About from './about.svelte';
-import Error from './_error.svelte';
+		
+	import About from './about.svelte';
+	import Error from './_error.svelte';
 
     export let state;
 	export let stats;

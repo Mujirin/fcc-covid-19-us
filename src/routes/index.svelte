@@ -5,10 +5,10 @@
 	export async function preload() {
 		try {
 			const usStats = await requests.usStats();
-			const historicUS = await requests.historicUS();
-			// console.log(historicUS, 'historicUS');
+			const historic = await requests.historicUS();
+			// console.log(historic, 'historic');
 
-			return { usStats, historicUS }
+			return { usStats, historic }
 		} catch(e) {
 			console.log(e);
 			this.error(500, 
@@ -27,8 +27,8 @@
 	import TableContainer from '../components/TableContainer.svelte';
 
 	export let usStats;
-	export let historicUS;
-	console.log(historicUS, 'historicUS');
+	export let historic;
+	console.log(historic, 'historic');
 	// console.log(usStats, 'usState');
 </script>
 
@@ -44,6 +44,6 @@
 
 <CovidStat {...usStats}/>
 
-<CovidChart />
-
+<CovidChart historicData={historic} title="US Covid-19"/>
+<p>{historic} </p>
 <TableContainer />

@@ -28,9 +28,14 @@ function parseHistoric(historicData) {
             color: 'rgb(100, 0, 200)'
         },
         {
+            label: 'Negative',
+            key: 'negative',
+            color: 'rgb(100, 100, 200)'
+        },
+        {
             label: 'Recovered',
             key: 'recovered',
-            color: 'rgb(100, 100, 200)'
+            color: 'rgb(100, 200, 200)'
         },
         {
             label: 'Total Tested',
@@ -57,10 +62,9 @@ function parseHistoric(historicData) {
 
 function parseChart(historicData, key, label, color) {
     const chartData = historicData.map(data => {
-        // console.log(moment(data.date).format('YYYYMMDD'));
+        // console.log(parseInt(moment(data.date, 'YYYYMMDD').format('YYYYMMDD')));
         return {
-            // x: moment(data.date, 'YYYYMMDD'),
-            x: moment(data.date).format('YYYYMMDD'),
+            x: moment(data.date, 'YYYYMMDD').format('YYYYMMDD'),
             y: data[key] || 0,
         }
     });
