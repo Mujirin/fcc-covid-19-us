@@ -20,6 +20,16 @@ function historicUS(historicData) {
     return parseHistoric(historicData);
 }
 
+function historicState(state, historicData) {
+    console.log(state, 'state');
+    console.log(historicData, 'historicData');
+    const stateHistoric = historicData.filter(
+        d => d.state === state
+    );
+    console.log(stateHistoric, 'stateHistoric');
+    return parseHistoric(stateHistoric);
+}
+
 function parseHistoric(historicData) {
     return [
         {
@@ -53,16 +63,17 @@ function parseHistoric(historicData) {
             color: 'rgb(255, 99, 132)'
         }
     ].reduce((prev, next) => {
-        if (historicData.filter(d => d[next.key] !== null).length > 4) {
+        // if (historicData.filter(d => d[next.key] !== null).length > 4) {
+        if (historicData.filter(d => d[next.key]).length > 4) {
             prev.push(parseChart(historicData, next.key, next.label, next.color));
         }
+        console.log(prev, "prev");
         return prev;
     }, []);
 }
 
 function parseChart(historicData, key, label, color) {
     const chartData = historicData.map(data => {
-        // console.log(parseInt(moment(data.date, 'YYYYMMDD').format('YYYYMMDD')));
         return {
             x: moment(data.date, 'YYYYMMDD').format('YYYYMMDD'),
             y: data[key] || 0,
@@ -93,4 +104,5 @@ export default {
     usStats,
     stateStats,
     historicUS,
+    historicState,
 }
