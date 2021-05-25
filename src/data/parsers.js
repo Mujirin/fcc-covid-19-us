@@ -1,7 +1,6 @@
 import format from './format'
 import moment from 'moment';
-// import devalue from 'devalue';
-
+import stateNames from './stateNames';
 
 
 function usStats(data) {
@@ -16,13 +15,26 @@ function stateStats(state, data) {
     return parseStats(stateRawData);
 }
 
+function stateTable(stateData) {
+    return stateData.map(data => {
+        const { name } = stateNames.find(d => d.abbreviation === data.state);
+        return {
+            cases: format.number(data.positive),
+            deaths: format.number(data.death),
+            tested: format.number(data.totalTestResults),
+            state: format.number(data.state),
+            fullStateName: name,
+        }
+    })
+}
+
 function historicUS(historicData) {
     return parseHistoric(historicData);
 }
 
 function historicState(state, historicData) {
-    console.log(state, 'state');
-    console.log(historicData, 'historicData');
+    // console.log(state, 'state');
+    // console.log(historicData, 'historicData');
     const stateHistoric = historicData.filter(
         d => d.state === state
     );
@@ -67,7 +79,7 @@ function parseHistoric(historicData) {
         if (historicData.filter(d => d[next.key]).length > 4) {
             prev.push(parseChart(historicData, next.key, next.label, next.color));
         }
-        console.log(prev, "prev");
+        // console.log(prev, "prev");
         return prev;
     }, []);
 }
@@ -105,4 +117,5 @@ export default {
     stateStats,
     historicUS,
     historicState,
+    stateTable,
 }

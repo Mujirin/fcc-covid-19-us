@@ -6,9 +6,10 @@
 		try {
 			const usStats = await requests.usStats();
 			const historic = await requests.historicUS();
+			const statesData = await requests.statesData();
 			// console.log(historic, 'historic');
 
-			return { usStats, historic }
+			return { usStats, historic, statesData }
 		} catch(e) {
 			console.log(e);
 			this.error(500, 
@@ -28,7 +29,8 @@
 
 	export let usStats;
 	export let historic;
-	console.log(historic, 'historic');
+	export let statesData;
+	console.log(statesData, 'statesData');
 	// console.log(usStats, 'usState');
 </script>
 
@@ -46,4 +48,4 @@
 
 <CovidChart historicData={historic} title="US Covid-19"/>
 <p>{historic} </p>
-<TableContainer />
+<TableContainer data={statesData}/>
